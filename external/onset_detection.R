@@ -8,7 +8,7 @@ Mode <- function(x) {
   tab <- tabulate(match(x, ux)); ux[tab == max(tab)]
 }
 
-setwd("C:\\Users\\Artur\\AppData\\Roaming\\LOVE\\unnamed\ music\ game")
+setwd("%appdata%\\LOVE\\unnamed\ music\ game")
 
 bands <- 4
 averaging_window <- 5
@@ -32,28 +32,8 @@ pruned_spectral_flux <- NULL
 mask <- NULL
 spectra <- NULL
 
-#d <- aloha.mp3
-#outfile <- "aloha.beats"
-#d <- `imagematerial.mp3`
-#outfile <- "imagematerial.beats"
-d <- `Masayoshi.Minoshima...Bad.Apple!!.feat..nomico...Touhou.PV.[iichan].mp3`
-outfile <- "apple.beats"
-#d <- opm.mp3
-#outfile <- "opm.beats"
-#d <- Brain.Power.mp3
-#outfile <- "brain.beats"
-#d <- Crack.Traxxxx.mp3
-#outfile <- "crack.beats"
-#d <- `IOSYS...Cirno's.Perfect.Math.Class.mp3`
-#outfile <- "math.beats"
-#d <- `9d430cfd1e0510.mp3`
-#outfile <- "church.beats"
-#d <- pensamento_t_pico_de_esquerda_caviar.mp3
-#outfile <- "caviar.beats"
-#d <- Reol.Danshi..mp3
-#outfile <- "reol_danshi.beats"
-# <- kawaii.mp3
-#outfile <- "ageage.beats"
+#d <- .mp3 file
+#outfile <- .beats file
 
 bandwidth <- dim(d)[2]/bands
 for(i in 1:bands) {
@@ -81,7 +61,7 @@ mask <- (pruned_spectral_flux <= spectral_flux_threshold)
 pruned_spectral_flux <- pruned_spectral_flux - spectral_flux_threshold
 pruned_spectral_flux[mask] <- NA
 pruned_spectral_flux <- as.data.frame(pruned_spectral_flux)
-# essa coisa aí embaixo é pra manter somente os picos que não são menores que seus sucessores
+# essa coisa aÃ­ embaixo Ã© pra manter somente os picos que nÃ£o sÃ£o menores que seus sucessores
 for(i in 1:ncol(pruned_spectral_flux)) {
   for(j in 1:nrow(pruned_spectral_flux)) {
     if(!is.na(pruned_spectral_flux[j,i])) {
